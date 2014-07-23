@@ -1,0 +1,53 @@
+PATH
+  remote: .
+  specs:
+    email_sanitizer (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ast (2.0.0)
+    diff-lcs (1.2.5)
+    hashr (0.0.22)
+    json (1.8.1)
+    parser (2.2.0.pre.3)
+      ast (>= 1.1, < 3.0)
+      slop (~> 3.4, >= 3.4.5)
+    powerpack (0.0.9)
+    rainbow (2.0.0)
+    rake (10.3.2)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.3)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.3)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.3)
+    rubocop (0.24.1)
+      json (>= 1.7.7, < 2)
+      parser (>= 2.2.0.pre.3, < 3.0)
+      powerpack (~> 0.0.6)
+      rainbow (>= 1.99.1, < 3.0)
+      ruby-progressbar (~> 1.4)
+    ruby-progressbar (1.5.1)
+    safe_yaml (0.9.7)
+    slop (3.6.0)
+    travis-lint (1.8.0)
+      hashr (~> 0.0.22)
+      safe_yaml (~> 0.9.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.6)
+  email_sanitizer!
+  rake
+  rspec
+  rubocop
+  travis-lint
