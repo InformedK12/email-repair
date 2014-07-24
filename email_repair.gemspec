@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'email_sanitizer/version'
+require 'email_repair/version'
 require 'English'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'email_sanitizer'
-  spec.version       = EmailSanitizer::VERSION
+  spec.name          = 'email_repair'
+  spec.version       = EmailRepair::VERSION
   spec.authors       = ['Holman Gao']
   spec.email         = ['holman@golmansax.com']
   spec.summary       = 'Library to fix invalid emails'
-  spec.homepage      = 'https://github.com/ChalkSchools/email-sanitizer'
+  spec.homepage      = 'https://github.com/ChalkSchools/email-repair'
   spec.license       = 'MIT'
 
   spec.files         = Dir['{lib}/**/*', 'LICENSE', 'README.md']
