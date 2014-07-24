@@ -18,7 +18,4 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
   spec.test_files    = Dir['spec/**/*']
   spec.require_paths = ['lib']
-
-  spec.add_development_dependency 'bundler', '~> 1.6'
-  spec.add_development_dependency 'rake'
 end
