@@ -1,6 +1,5 @@
 module EmailSanitizer
   class Sanitizer
-
     def sanitizers
       [
         CommonMistakeSanitizer,
@@ -117,6 +116,5 @@ module EmailSanitizer
         result
       end
     end
-
   end
 end
