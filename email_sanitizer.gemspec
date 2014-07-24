@@ -10,8 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Holman Gao']
   spec.email         = ['holman@golmansax.com']
   spec.summary       = 'Library to fix invalid emails'
-  spec.description   = ''
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/ChalkSchools/email-sanitizer'
   spec.license       = 'MIT'
 
   spec.files         = Dir['{lib}/**/*', 'LICENSE', 'README.md']
