@@ -1,0 +1,16 @@
+Documentation:
+  Enabled: false
+
+TrailingComma:
+  EnforcedStyleForMultiline: comma
+
+AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+CollectionMethods:
+  PreferredMethods:
+    collect: 'map'
+    collect!: 'map!'
+    inject: 'reduce'
+    find: 'detect'
+    find_all: 'select'
