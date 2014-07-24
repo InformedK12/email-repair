@@ -1,5 +1,7 @@
 # EmailSanitizer
 
+[![Build Status](https://travis-ci.org/ChalkSchools/email-sanitizer.svg?branch=master)](https://travis-ci.org/ChalkSchools/email-sanitizer)
+
 TODO: Write a gem description
 
 ## Installation
