@@ -1,4 +1,4 @@
-require_relative '../lib/email_sanitizer'
+require_relative '../lib/email_repair'
 
 RSpec.configure do |config|
   config.filter_run focus: true

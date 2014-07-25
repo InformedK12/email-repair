@@ -1,6 +1,6 @@
-# EmailSanitizer
+# Email Repair
 
-[![Build Status](https://travis-ci.org/ChalkSchools/email-sanitizer.svg?branch=master)](https://travis-ci.org/ChalkSchools/email-sanitizer)
+[![Build Status](https://travis-ci.org/ChalkSchools/email-repair.svg?branch=master)](https://travis-ci.org/ChalkSchools/email-repair)
 
 TODO: Write a gem description
 
@@ -8,7 +8,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'email_sanitizer'
+    gem 'email_repair'
 
 And then execute:
 
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install email_sanitizer
+    $ gem install email_repair
 
 ## Usage
 
@@ -24,7 +24,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/email_sanitizer/fork )
+1. Fork it ( https://github.com/[my-github-username]/email_repair/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

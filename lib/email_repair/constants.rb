@@ -1,4 +1,4 @@
-module EmailSanitizer
+module EmailRepair
   class Constants
     def self.email_regex
       local_part_regex = "[#{email_local_part_valid_chars}]+"

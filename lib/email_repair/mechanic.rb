@@ -1,26 +1,26 @@
-module EmailSanitizer
-  class Sanitizer
-    def sanitizers
+module EmailRepair
+  class Mechanic
+    def repairs
       [
-        CommonMistakeSanitizer,
-        CommonDomainSuffixSanitizer,
+        CommonMistakeRepair,
+        CommonDomainSuffixRepair,
         CommonDomainPeriodAdder,
         CommonDomainAtAdder,
-        CommonDomainSwapSanitizer,
-        EmailRegexSanitizer,
+        CommonDomainSwapRepair,
+        EmailRegexRepair,
       ]
     end
 
-    def sanitize(email)
+    def repair(email)
       return unless email
 
-      sanitizers.each { |sanitizer| email = sanitizer.sanitize(email) }
+      repairs.each { |repair| email = repair.repair(email) }
 
       email
     end
 
-    class CommonMistakeSanitizer
-      def self.sanitize(email)
+    class CommonMistakeRepair
+      def self.repair(email)
         email.downcase
           .gsub(/\s/, '')
           .sub(/@+/, '@')
@@ -29,15 +29,15 @@ module EmailSanitizer
       end
     end
 
-    class EmailRegexSanitizer
-      def self.sanitize(email)
-        match = email.match(/(#{EmailSanitizer::Constants.email_regex})/)
+    class EmailRegexRepair
+      def self.repair(email)
+        match = email.match(/(#{EmailRepair::Constants.email_regex})/)
         match && match.captures.first
       end
     end
 
-    class CommonDomainSanitizer
-      def self.sanitize(*)
+    class CommonDomainRepair
+      def self.repair(*)
         fail 'not implemented'
       end
 
@@ -55,8 +55,8 @@ module EmailSanitizer
       end
     end
 
-    class CommonDomainSuffixSanitizer < CommonDomainSanitizer
-      def self.sanitize(email)
+    class CommonDomainSuffixRepair < CommonDomainRepair
+      def self.repair(email)
         common_domains.each do |name, suffix|
           email = "#{email}.#{suffix}" if email.match(/#{name}$/)
         end
@@ -64,8 +64,8 @@ module EmailSanitizer
       end
     end
 
-    class CommonDomainPeriodAdder < CommonDomainSanitizer
-      def self.sanitize(email)
+    class CommonDomainPeriodAdder < CommonDomainRepair
+      def self.repair(email)
         common_domains.each do |name, suffix|
           regex = /#{name}#{suffix}$/
           email = email.sub(regex, "#{name}.#{suffix}") if email.match(regex)
@@ -74,8 +74,8 @@ module EmailSanitizer
       end
     end
 
-    class CommonDomainAtAdder < CommonDomainSanitizer
-      def self.sanitize(email)
+    class CommonDomainAtAdder < CommonDomainRepair
+      def self.repair(email)
         common_domains.each do |name, suffix|
           punc_regex = /[.#-]#{name}.#{suffix}$/
           if email.match(punc_regex)
@@ -88,8 +88,8 @@ module EmailSanitizer
       end
     end
 
-    class CommonDomainSwapSanitizer < CommonDomainSanitizer
-      def self.sanitize(email)
+    class CommonDomainSwapRepair < CommonDomainRepair
+      def self.repair(email)
         swapped_names.each do |swapped, real|
           suffix = common_domains[real]
           regex = /#{swapped}.#{suffix}$/
