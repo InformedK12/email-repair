@@ -1,5 +1,6 @@
 # Email Repair
 
+[![Gem Version](https://badge.fury.io/rb/email_repair.svg)](http://badge.fury.io/rb/email_repair)
 [![Build Status](https://travis-ci.org/ChalkSchools/email-repair.svg?branch=master)](https://travis-ci.org/ChalkSchools/email-repair)
 
 TODO: Write a gem description
