@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/email_repair.svg)](http://badge.fury.io/rb/email_repair)
 [![Build Status](https://travis-ci.org/ChalkSchools/email-repair.svg?branch=master)](https://travis-ci.org/ChalkSchools/email-repair)
+[![Coverage Status](https://img.shields.io/coveralls/ChalkSchools/email-repair.svg)](https://coveralls.io/r/ChalkSchools/email-repair?branch=master)
 
 TODO: Write a gem description
 
