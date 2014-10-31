@@ -6,4 +6,5 @@ gemspec
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
-gem 'travis-lint'
+gem 'travis'
+gem 'coveralls'

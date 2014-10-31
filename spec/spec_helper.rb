@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require_relative '../lib/email_repair'
 
 RSpec.configure do |config|
