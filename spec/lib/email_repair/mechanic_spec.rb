@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module EmailRepair
   describe Mechanic, '#repair' do
-
     let(:mechanic) { Mechanic.new }
 
     it 'returns clean emails as is' do
@@ -26,7 +25,7 @@ module EmailRepair
     end
 
     it 'returns nil for strings that have no email' do
-      ['', ' ', 'NOT AN EMAIL', 'b at b dot com'].each do |not_email|
+      ['', ' ', 'NOT AN EMAIL', 'b at b dot com', 'a.@com'].each do |not_email|
         expect(mechanic.repair(not_email)).to be_nil
       end
     end
@@ -107,6 +106,7 @@ module EmailRepair
         'one@email.com,another@email.com' => 'one@email.com',
         'one@email.com;another@email.com' => 'one@email.com',
         '<one@email.com>' => 'one@email.com',
+        '.one@email.com' => 'one@email.com',
       }
 
       dirty_emails.each do |in_mail, out_mail|
@@ -125,6 +125,5 @@ module EmailRepair
         expect(mechanic.repair(in_mail)).to eq out_mail
       end
     end
-
   end
 end
