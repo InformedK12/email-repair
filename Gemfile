@@ -5,6 +5,6 @@ gemspec
 
 gem 'rake'
 gem 'rspec'
-gem 'rubocop'
+gem 'rubocop', '~> 0.27.0'
 gem 'travis'
 gem 'coveralls'
