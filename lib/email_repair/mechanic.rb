@@ -11,6 +11,26 @@ module EmailRepair
       ]
     end
 
+    def repair_all(emails)
+      sanitized_emails = []
+      invalid_emails = []
+
+      emails.each do |email|
+        repaired_email = repair(email)
+
+        if repaired_email
+          sanitized_emails << repaired_email
+        else
+          invalid_emails << email
+        end
+      end
+
+      OpenStruct.new(
+        sanitized_emails: sanitized_emails,
+        invalid_emails: invalid_emails,
+      )
+    end
+
     def repair(email)
       return unless email
 

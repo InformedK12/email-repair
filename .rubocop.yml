@@ -7,6 +7,9 @@ TrailingComma:
 AccessModifierIndentation:
   EnforcedStyle: outdent
 
+MethodLength:
+  Max: 15
+
 CollectionMethods:
   PreferredMethods:
     collect: 'map'
