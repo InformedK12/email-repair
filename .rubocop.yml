@@ -10,6 +10,9 @@ AccessModifierIndentation:
 MethodLength:
   Max: 15
 
+LineLength:
+  Max: 84
+
 CollectionMethods:
   PreferredMethods:
     collect: 'map'

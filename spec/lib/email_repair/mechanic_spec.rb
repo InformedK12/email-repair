@@ -31,17 +31,17 @@ module EmailRepair
       )
 
       good_emails.each do |good_email|
-        expect(mechanic.repair(good_email)).to eq good_email
+        expect(mechanic.repair(good_email).sanitized_email).to eq good_email
       end
     end
 
-    it 'returns nil for nil email' do
-      expect(mechanic.repair(nil)).to be_nil
+    it 'returns invalid result when email is nil' do
+      expect(mechanic.repair(nil).valid?).to be false
     end
 
     it 'returns nil for strings that have no email' do
       ['', ' ', 'NOT AN EMAIL', 'b at b dot com', 'a.@com'].each do |not_email|
-        expect(mechanic.repair(not_email)).to be_nil
+        expect(mechanic.repair(not_email).valid?).to be false
       end
     end
 
@@ -53,32 +53,36 @@ module EmailRepair
       }
 
       space_mails.each do |in_mail, out_mail|
-        expect(mechanic.repair(in_mail)).to eq out_mail
+        expect(mechanic.repair(in_mail).sanitized_email).to eq out_mail
       end
     end
 
     it 'adds missing .com' do
       no_com_mails = %w(blah@gmail bloo@yahoo blee@hotmail)
       no_com_mails.each do |no_com_mail|
-        expect(mechanic.repair(no_com_mail)).to eq "#{no_com_mail}.com"
+        sanitized_email = mechanic.repair(no_com_mail).sanitized_email
+        expect(sanitized_email).to eq "#{no_com_mail}.com"
       end
     end
 
     it 'trims extra @ signs' do
-      expect(mechanic.repair('b@@@b.com')).to eq 'b@b.com'
+      expect(mechanic.repair('b@@@b.com').sanitized_email).to eq 'b@b.com'
     end
 
     it 'changes c0m to com' do
-      expect(mechanic.repair('b0b@b0b.c0m')).to eq 'b0b@b0b.com'
+      expect(mechanic.repair('b0b@b0b.c0m').sanitized_email).to eq 'b0b@b0b.com'
     end
 
     it 'fixes a missing .' do
-      expect(mechanic.repair('who@gmailcom')).to eq 'who@gmail.com'
-      expect(mechanic.repair('what@hotmailcom')).to eq 'what@hotmail.com'
+      expect(mechanic.repair('who@gmailcom').sanitized_email).to eq 'who@gmail.com'
+
+      sanitized_email = mechanic.repair('what@hotmailcom').sanitized_email
+      expect(sanitized_email).to eq 'what@hotmail.com'
     end
 
     it 'fixes letter swap' do
-      expect(mechanic.repair('bloo@yhaoo.com')).to eq 'bloo@yahoo.com'
+      sanitized_email = mechanic.repair('bloo@yhaoo.com').sanitized_email
+      expect(sanitized_email).to eq 'bloo@yahoo.com'
     end
 
     it 'adds a missing @ for common domains' do
@@ -92,12 +96,13 @@ module EmailRepair
       }
 
       dirty_emails.each do |in_mail, out_mail|
-        expect(mechanic.repair(in_mail)).to eq out_mail
+        expect(mechanic.repair(in_mail).sanitized_email).to eq out_mail
       end
     end
 
     it 'swaps a # for an @ for common domains' do
-      expect(mechanic.repair('pound#yahoo.com')).to eq 'pound@yahoo.com'
+      sanitized_email = mechanic.repair('pound#yahoo.com').sanitized_email
+      expect(sanitized_email).to eq 'pound@yahoo.com'
     end
 
     it 'swaps a - for an @ for common domains' do
@@ -106,12 +111,12 @@ module EmailRepair
         'sarah+aea-chalkschools.com' => 'sarah+aea@chalkschools.com',
       }
       dirty_emails.each do |in_mail, out_mail|
-        expect(mechanic.repair(in_mail)).to eq out_mail
+        expect(mechanic.repair(in_mail).sanitized_email).to eq out_mail
       end
     end
 
     it 'replaces , with .' do
-      expect(mechanic.repair('b@b,com')).to eq 'b@b.com'
+      expect(mechanic.repair('b@b,com').sanitized_email).to eq 'b@b.com'
     end
 
     it 'grabs an email out of the string' do
@@ -125,7 +130,7 @@ module EmailRepair
       }
 
       dirty_emails.each do |in_mail, out_mail|
-        expect(mechanic.repair(in_mail)).to eq out_mail
+        expect(mechanic.repair(in_mail).sanitized_email).to eq out_mail
       end
     end
 
@@ -137,7 +142,7 @@ module EmailRepair
       }
 
       dirty_emails.each do |in_mail, out_mail|
-        expect(mechanic.repair(in_mail)).to eq out_mail
+        expect(mechanic.repair(in_mail).sanitized_email).to eq out_mail
       end
     end
   end

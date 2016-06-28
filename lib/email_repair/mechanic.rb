@@ -12,29 +12,25 @@ module EmailRepair
     end
 
     def repair_all(emails)
-      sanitized_emails = []
-      invalid_emails = []
-
-      emails.each do |email|
-        repaired_email = repair(email)
-
-        if repaired_email
-          sanitized_emails << repaired_email
-        else
-          invalid_emails << email
-        end
-      end
+      results = emails.map { |email| repair(email) }
+      sanitized_results, invalid_results = results.partition(&:valid?)
 
       OpenStruct.new(
-        sanitized_emails: sanitized_emails,
-        invalid_emails: invalid_emails,
+        sanitized_emails: sanitized_results.map(&:sanitized_email),
+        invalid_emails: invalid_results.map(&:email),
       )
     end
 
     def repair(email)
-      return unless email
+      sanitized_email = repairs.reduce(email) do |memo, repair|
+        memo ? repair.repair(memo) : memo
+      end
 
-      repairs.reduce(email) { |memo, repair| repair.repair(memo) }
+      OpenStruct.new(
+        email: email,
+        sanitized_email: sanitized_email,
+        valid?: !sanitized_email.to_s.empty?,
+      )
     end
 
     class CommonMistakeRepair
