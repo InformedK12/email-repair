@@ -1,6 +1,21 @@
 require 'spec_helper'
 
 module EmailRepair
+  describe Mechanic, '#repair_all' do
+
+    it 'sanitizes an array of emails and returns bulk results' do
+      mechanic = Mechanic.new
+      salvageable_emails = %w(One@@two.com three@four.com)
+      sanitized_emails = %w(one@two.com three@four.com)
+      bad_emails = %w(bleep@blop plooooooop)
+
+      result = mechanic.repair_all(salvageable_emails + bad_emails)
+      expect(result.sanitized_emails).to match_array sanitized_emails
+      expect(result.invalid_emails).to match_array bad_emails
+    end
+
+  end
+
   describe Mechanic, '#repair' do
     let(:mechanic) { Mechanic.new }
 
