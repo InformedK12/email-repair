@@ -5,9 +5,9 @@ module EmailRepair
 
     it 'sanitizes an array of emails and returns bulk results' do
       mechanic = Mechanic.new
-      salvageable_emails = %w(One@@two.com three@four.com)
+      salvageable_emails = %w(One@@two.com three@four.com one@twO.com)
       sanitized_emails = %w(one@two.com three@four.com)
-      bad_emails = %w(bleep@blop plooooooop)
+      bad_emails = %w(bleep@blop plooooooop plooOOooop)
 
       result = mechanic.repair_all(salvageable_emails + bad_emails)
       expect(result.sanitized_emails).to match_array sanitized_emails
