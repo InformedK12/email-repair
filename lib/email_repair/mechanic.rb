@@ -12,6 +12,8 @@ module EmailRepair
     end
 
     def repair_all(emails)
+      emails = emails.reject(&:nil?).map(&:strip).reject { |email| email == '' }
+
       sanitized_emails = []
       invalid_emails = []
 
