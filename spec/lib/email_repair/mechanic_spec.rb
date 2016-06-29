@@ -14,6 +14,16 @@ module EmailRepair
       expect(result.invalid_emails).to match_array bad_emails
     end
 
+    it 'filters out nil and empty string emails before processing results' do
+      mechanic = Mechanic.new
+      emails = [nil, '', ' ', 'bleep@bloop.com']
+
+      result = mechanic.repair_all(emails)
+
+      expect(result.sanitized_emails).to eq ['bleep@bloop.com']
+      expect(result.invalid_emails).to eq []
+    end
+
   end
 
   describe Mechanic, '#repair' do
