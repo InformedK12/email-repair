@@ -26,8 +26,8 @@ module EmailRepair
       end
 
       OpenStruct.new(
-        sanitized_emails: sanitized_emails,
-        invalid_emails: invalid_emails,
+        sanitized_emails: sanitized_emails.uniq,
+        invalid_emails: invalid_emails.uniq,
       )
     end
 
