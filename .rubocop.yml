@@ -7,6 +7,9 @@ TrailingComma:
 AccessModifierIndentation:
   EnforcedStyle: outdent
 
+SingleLineBlockParams:
+  Enabled: false
+
 MethodLength:
   Max: 15
 

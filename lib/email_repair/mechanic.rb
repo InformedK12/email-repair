@@ -36,9 +36,7 @@ module EmailRepair
     def repair(email)
       return unless email
 
-      repairs.each { |repair| email = repair.repair(email) }
-
-      email
+      repairs.reduce(email) { |memo, repair| repair.repair(memo) }
     end
 
     class CommonMistakeRepair
