@@ -45,7 +45,7 @@ module EmailRepair
           .gsub(/\s/, '')
           .sub(/@+/, '@')
           .sub(/\.c0m$/, '.com')
-          .sub(/,[a-z]{2,4}$/) { |m| m.sub(',', '.') }
+          .sub(/,[a-z]{2,24}$/) { |m| m.sub(',', '.') }
       end
     end
 

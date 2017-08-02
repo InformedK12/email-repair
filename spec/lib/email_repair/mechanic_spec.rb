@@ -32,12 +32,17 @@ module EmailRepair
     it 'returns clean emails as is' do
       # Rant about apostrophe in email
       # http://www.stuffaboutcode.com/2013/02/validating-email-address-bloody.html
+      # List of longest TLDs
+      # https://jasontucker.blog/8945/what-is-the-longest-tld-you-can-get-for-a-domain-name
       good_emails = %w(
         b@b.com
         lobatifricha@gmail.com
         mrspicy+whocares@whatevs.com
         your.mom@the.museum
         martin.o'hanlon@mycompany.com
+        b@mps.school
+        b@kickstarter.engineering
+        b@joyful.christmas
       )
 
       good_emails.each do |good_email|
