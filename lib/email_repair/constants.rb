@@ -4,7 +4,7 @@ module EmailRepair
       def email_regex
         local_part_regex = "[#{valid_chars}]" \
           "([#{valid_chars_with_dot}]*[#{valid_chars}])?"
-        /#{local_part_regex}@(?:[a-z0-9\-]+\.)+(?:museum|travel|[a-z]{2,4})/
+        /#{local_part_regex}@(?:[a-z0-9\-]+\.)+(?:[a-z]{2,24})/
       end
 
     private
