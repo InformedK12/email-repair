@@ -42,10 +42,10 @@ module EmailRepair
     class CommonMistakeRepair
       def self.repair(email)
         email.downcase
-          .gsub(/\s/, '')
-          .sub(/@+/, '@')
-          .sub(/\.c0m$/, '.com')
-          .sub(/,[a-z]{2,24}$/) { |m| m.sub(',', '.') }
+             .gsub(/\s/, '')
+             .sub(/@+/, '@')
+             .sub(/\.c0m$/, '.com')
+             .sub(/,[a-z]{2,24}$/) { |m| m.sub(',', '.') }
       end
     end
 
@@ -58,7 +58,7 @@ module EmailRepair
 
     class CommonDomainRepair
       def self.repair(*)
-        fail 'not implemented'
+        raise 'not implemented'
       end
 
       def self.common_domains
@@ -78,7 +78,7 @@ module EmailRepair
     class CommonDomainSuffixRepair < CommonDomainRepair
       def self.repair(email)
         common_domains.each do |name, suffix|
-          email = "#{email}.#{suffix}" if email.match(/#{name}$/)
+          email = "#{email}.#{suffix}" if email.match?(/#{name}$/)
         end
         email
       end
@@ -100,7 +100,7 @@ module EmailRepair
           punc_regex = /[.#-]#{name}.#{suffix}$/
           if email.match(punc_regex)
             email = email.sub(punc_regex, "@#{name}.#{suffix}")
-          elsif email.match(/[^@]#{name}.#{suffix}$/)
+          elsif email.match?(/[^@]#{name}.#{suffix}$/)
             email = email.sub(/#{name}.#{suffix}$/, "@#{name}.#{suffix}")
           end
         end

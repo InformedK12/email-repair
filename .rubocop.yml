@@ -1,22 +1,55 @@
-Documentation:
-  Enabled: false
+################################################################################
+#                                                                              #
+#                    Rules that depart from rubocop defaults                   #
+#                                                                              #
+################################################################################
 
-TrailingComma:
-  EnforcedStyleForMultiline: comma
-
-AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
-SingleLineBlockParams:
+Style/Documentation:
   Enabled: false
 
-MethodLength:
+Metrics/MethodLength:
   Max: 15
 
-CollectionMethods:
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/CollectionMethods:
   PreferredMethods:
     collect: 'map'
     collect!: 'map!'
     inject: 'reduce'
     find: 'detect'
     find_all: 'select'
+
+
+################################################################################
+#                                                                              #
+#                            Rules we want to enable                           #
+#                                                                              #
+################################################################################
+
+# Default -> Max: 100
+Metrics/ModuleLength:
+  Max: 124
+
+# Default -> Max: 25
+Metrics/BlockLength:
+  Max: 104
+
+################################################################################
+#                                                                              #
+#                         Rules we don't want to enable                        #
+#                                                                              #
+################################################################################
+
+Style/SingleLineBlockParams:
+  Enabled: false

@@ -3,6 +3,6 @@ rvm:
   - 2.4.3
 script:
   - bundle exec rake
-  - rubocop -D
+  - bundle exec rubocop -D
   - bundle exec travis lint --skip-completion-check
   - gem build email_repair.gemspec
