@@ -2,12 +2,11 @@ require 'spec_helper'
 
 module EmailRepair
   describe Mechanic, '#repair_all' do
-
     it 'sanitizes an array of emails and returns bulk results' do
       mechanic = Mechanic.new
-      salvageable_emails = %w(One@@two.com three@four.com one@twO.com)
-      sanitized_emails = %w(one@two.com three@four.com)
-      bad_emails = %w(bleep@blop plooooooop plooOOooop)
+      salvageable_emails = %w[One@@two.com three@four.com one@twO.com]
+      sanitized_emails = %w[one@two.com three@four.com]
+      bad_emails = %w[bleep@blop plooooooop plooOOooop]
 
       result = mechanic.repair_all(salvageable_emails + bad_emails)
       expect(result.sanitized_emails).to match_array sanitized_emails
@@ -23,7 +22,6 @@ module EmailRepair
       expect(result.sanitized_emails).to eq ['bleep@bloop.com']
       expect(result.invalid_emails).to eq []
     end
-
   end
 
   describe Mechanic, '#repair' do
@@ -34,7 +32,7 @@ module EmailRepair
       # http://www.stuffaboutcode.com/2013/02/validating-email-address-bloody.html
       # List of longest TLDs
       # https://jasontucker.blog/8945/what-is-the-longest-tld-you-can-get-for-a-domain-name
-      good_emails = %w(
+      good_emails = %w[
         b@b.com
         lobatifricha@gmail.com
         mrspicy+whocares@whatevs.com
@@ -43,7 +41,7 @@ module EmailRepair
         b@mps.school
         b@kickstarter.engineering
         b@joyful.christmas
-      )
+      ]
 
       good_emails.each do |good_email|
         expect(mechanic.repair(good_email)).to eq good_email
@@ -73,7 +71,7 @@ module EmailRepair
     end
 
     it 'adds missing .com' do
-      no_com_mails = %w(blah@gmail bloo@yahoo blee@hotmail)
+      no_com_mails = %w[blah@gmail bloo@yahoo blee@hotmail]
       no_com_mails.each do |no_com_mail|
         expect(mechanic.repair(no_com_mail)).to eq "#{no_com_mail}.com"
       end
