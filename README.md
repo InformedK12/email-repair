@@ -50,7 +50,7 @@ the emails that were unable to be repaired
 
 #### EmailRepair::Constants::email_regex
 
-Returns a regular expression to be used to validate user supplied email
+Returns a regular expression to be used to validate user-supplied email
 addresses.
 
 ### Available Repairs
