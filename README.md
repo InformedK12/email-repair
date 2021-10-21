@@ -71,7 +71,7 @@ Adds missing top-level domain for common email domains. For example, it replaces
 
 #### CommonDomainPeriodAdder
 
-Adds missing period between the domain and top-level domain for  common email
+Adds missing period between the domain and top-level domain for common email
 domains. For example, it replaces `blah@gmailcom` with `blah@gmail.com`.
 
 #### CommonDomainAtAdder
