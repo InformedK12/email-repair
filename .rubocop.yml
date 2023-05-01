@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 ################################################################################
 #                                                                              #
 #                    Rules that depart from rubocop defaults                   #
