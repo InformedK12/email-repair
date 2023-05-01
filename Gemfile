@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'coveralls', '~> 0.8.21'
-gem 'rake', '~> 12.3.1'
+gem 'rake', '~> 13.0.6'
 gem 'rspec', '~> 3.7.0'
 gem 'rubocop', '~> 0.54.0'
 gem 'travis', '~> 1.8.8'
