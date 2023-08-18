@@ -123,6 +123,10 @@ module EmailRepair
       end
     end
 
+    it 'does not add an extra @ if there is already one' do
+      expect(mechanic.repair('bloo@myyahoo.com')).to eq 'bloo@myyahoo.com'
+    end
+
     it 'replaces , with .' do
       expect(mechanic.repair('b@b,com')).to eq 'b@b.com'
     end

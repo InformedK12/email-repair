@@ -18,6 +18,9 @@ Gemspec/RequiredRubyVersion:
 # AllowedMethods: refine
 Metrics/BlockLength:
   Max: 104
+  Exclude:
+    - 'spec/lib/email_repair/mechanic_spec.rb'
+
 
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
@@ -28,6 +31,8 @@ Metrics/MethodLength:
 # Configuration parameters: CountComments, CountAsOne.
 Metrics/ModuleLength:
   Max: 124
+  Exclude:
+    - 'spec/lib/email_repair/mechanic_spec.rb'
 
 # Offense count: 10
 # This cop supports unsafe autocorrection (--autocorrect-all).
