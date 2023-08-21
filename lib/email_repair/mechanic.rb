@@ -96,8 +96,11 @@ module EmailRepair
 
     class CommonDomainAtAdder < CommonDomainRepair
       def self.repair(email)
+        return email if email.match('.+@.+\..+')
+
         common_domains.each do |name, suffix|
           punc_regex = /[.#-]#{name}.#{suffix}$/
+
           if email.match(punc_regex)
             email = email.sub(punc_regex, "@#{name}.#{suffix}")
           elsif email.match?(/[^@]#{name}.#{suffix}$/)
