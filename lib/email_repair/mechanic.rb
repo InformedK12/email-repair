@@ -115,8 +115,8 @@ module EmailRepair
       def self.repair(email)
         swapped_names.each do |swapped, real|
           suffix = common_domains[real]
-          regex = /#{swapped}.#{suffix}$/
-          email = email.sub(regex, "#{real}.#{suffix}") if email.match(regex)
+          regex = /@#{swapped}.#{suffix}$/
+          email = email.sub(regex, "@#{real}.#{suffix}") if email.match(regex)
         end
         email
       end
