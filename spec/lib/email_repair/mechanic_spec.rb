@@ -109,6 +109,11 @@ module EmailRepair
       end
     end
 
+    it 'does not sanitize when common domain is part of the domain' do
+      email = 'me@goal.com'
+      expect(mechanic.repair(email)).to eq email
+    end
+
     it 'swaps a # for an @ for common domains' do
       expect(mechanic.repair('pound#yahoo.com')).to eq 'pound@yahoo.com'
     end
